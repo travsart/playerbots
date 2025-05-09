@@ -113,40 +113,12 @@ file(GLOB Playerbot_DeathKnight ${CMAKE_CURRENT_SOURCE_DIR}/playerbot/strategy/d
     source_group("Player Bot\\Strategies\\DeathKnight" FILES ${Playerbot_DeathKnight})
     LIST(APPEND LIBRARY_SRCS ${Playerbot_DeathKnight})
 
-# Define ENABLE_PLAYERBOTS if need
-if (BUILD_PLAYERBOTS)
-  add_definitions(-DENABLE_PLAYERBOTS)
-endif()
+add_definitions(-DENABLE_PLAYERBOTS)
+add_definitions(-DMANGOS)
+add_definitions(-DMANGOSBOT_TWO)
+add_definitions(-DENABLE_MODULES)
+add_definitions(-DBUILD_AHBOT)
 
-# Define Core
-if ( ${CMAKE_PROJECT_NAME} MATCHES "CMaNGOS")
-  add_definitions(-DCMANGOS)
-else()
-  if ( ${CMAKE_PROJECT_NAME} MATCHES "MaNGOS")
-    add_definitions(-DMANGOS)
-  endif()
-endif()
-
-# Define Expansion
-if ( ${CMAKE_PROJECT_NAME} MATCHES "Classic")
-  add_definitions(-DMANGOSBOT_ZERO)
-endif()
-if ( ${CMAKE_PROJECT_NAME} MATCHES "TBC")
-  add_definitions(-DMANGOSBOT_ONE)
-endif()
-if ( ${CMAKE_PROJECT_NAME} MATCHES "WoTLK")
-  add_definitions(-DMANGOSBOT_TWO)
-endif()
-
-# Define ENABLE_MODULES if need
-if (BUILD_MODULES)
-  add_definitions(-DENABLE_MODULES)
-endif()
-
-# Define BUILD_AHBOT if need
-if (BUILD_AHBOT)
-  add_definitions(-DBUILD_AHBOT)
-endif()
 
 if(PCH)
   include_directories(${CMAKE_CURRENT_BINARY_DIR})
